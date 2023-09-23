@@ -23,7 +23,7 @@ def day_object():
 # Request that pass the object of the day, hour, minute and second to becode graph regarding the time frame which the button was pushed
 def get_junior_today_attendance():
     # Change your personal token for this request here (remember to verify the payload!)
-    junior_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoib3duZXIiLCJ1aWQiOiI2ZDI4NmYwNy0wMzMzLTQyYTItOTNjNy1hZjhhYzNlNzg1OGYiLCJrZXkiOiI0ZGI1MmI3NyIsImlhdCI6MTY5NTExMTA5OH0.ZSdvZwHKYCA29yg3yEQTWtHqvQyYJNFHhvODRhdkF_s'
+    junior_token = 'YOUR_TOKEN_HERE'
     junior_payload = {
     "operationName": "get_junior_today_attendance", 
      "variables": {"day": day_object()}, 
@@ -60,7 +60,7 @@ def record_attendance(bool):
         return None
 
     # Change your personal token for this request here (remember to verify the payload!)
-    becode_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoib3duZXIiLCJ1aWQiOiI2ZDI4NmYwNy0wMzMzLTQyYTItOTNjNy1hZjhhYzNlNzg1OGYiLCJrZXkiOiI0ZGI1MmI3NyIsImlhdCI6MTY5NTExMTA5OH0.ZSdvZwHKYCA29yg3yEQTWtHqvQyYJNFHhvODRhdkF_s'
+    becode_token = 'YOUR_TOKEN_HERE'
     becode_payload = {
         "operationName": "record_attendance_time",
         "variables": {"period": time_period.value, "atHome": at_home},
