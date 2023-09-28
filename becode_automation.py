@@ -2,12 +2,19 @@ import requests
 from enum import Enum
 from datetime import datetime
 import os
+import logging
 
 # Get your personal token on: 
 # mybecode --> inspect --> network --> 
 # fetch/xhr --> name (graph.becode.org) --> headers (request headers) --> authorization
 
 
+log_filename = 'my_script.log'
+log_level = logging.INFO
+
+logging.basicConfig(filename=log_filename, level=log_level, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+logging.info('This is an informational message.')
+logging.warning('This is a warning message.')
 
 class AttendanceTimePeriod(Enum):
     Morning = 'MORNING'
@@ -81,7 +88,17 @@ def main():
     # Access the environment variable and convert it to a boolean
     at_home = os.environ.get("AT_HOME", "").lower() == "true"
     token = os.environ.get("TOKEN")
-    record_attendance(at_home, token)
+
+    try:
+        record_attendance(at_home, token)
+    except requests.exceptions.RequestException as req_error:
+        logging.error(f'Request error occurred: {req_error}')
+        raise  # Re-raise the exception for further handling
+    except Exception as e:
+        logging.error(f'An unexpected error occurred: {e}')
+        raise  # Re-raise the exception for further handling
 
 if __name__ == "__main__":
     main()
+
+logging.shutdown()
