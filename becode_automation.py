@@ -44,13 +44,16 @@ def get_junior_today_attendance(token):
     json=junior_payload,
     headers={'Authorization': f'Bearer {token}'}
     )
+    
+    logging.info(f'Status Code request get_junior_today_attendance -> {resp.status_code}')
+    logging.info(f'Request response get_junior_today_attendance -> {resp.json()}')
 
 # Request that "push the hour button". It passes the request with a personal token and the status (bool) of where the student is
 def record_attendance(at_home, token):
     hour = datetime.now().hour
     minute = datetime.now().minute
-    print(f'Running record_attendace at {hour}:{minute}')
-    if hour == 9:
+    logging.info(f'Running record_attendace at {hour}:{minute}')
+    if hour == 8:
         time_period = AttendanceTimePeriod.Morning
         # When calling this function here, the first request is sent and then the scheduler is going to trigger and start job for the current request right after
         get_junior_today_attendance(token)
@@ -81,8 +84,8 @@ def record_attendance(at_home, token):
         headers={'Authorization': f'Bearer {token}'}
     )
     
-    logging.info(f'Status Code request -> {resp.status_code}')
-    logging.info(f'Request response -> {resp.json()}')
+    logging.info(f'Status Code request record_attendance -> {resp.status_code}')
+    logging.info(f'Request response record_attendance -> {resp.json()}')
 
 def main():
     # Access the environment variable and convert it to a boolean
