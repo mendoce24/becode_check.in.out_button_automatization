@@ -7,21 +7,13 @@ name: Schedule triggered workflow
 on:
   schedule:
     - cron: "46 8,17 * * 1,2,4"
-      env:
-        AT_HOME: "false"  # Pass the boolean value as a string
-        TOKEN: ${{ secrets.TOKEN }}
+        
     - cron: "30 12,13 * * 1,2,4"
-      env:
-        AT_HOME: "false"  # Pass the boolean value as a string
-        TOKEN: ${{ secrets.TOKEN }}
+        
     - cron: "46 8,17 * * 3,5"
-      env:
-        AT_HOME: "true"  # Pass the boolean value as a string
-        TOKEN: ${{ secrets.TOKEN }}
+        
     - cron: "30 12,13 * * 3,5"
-      env:
-        AT_HOME: "true"  # Pass the boolean value as a string
-        TOKEN: ${{ secrets.TOKEN }}
+        
 
 # A workflow run that starts a script
 jobs: 
@@ -30,8 +22,20 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    env:  # Define environment variables
+      TOKEN: ${{ secrets.TOKEN }}
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Checkout your repository (if not already checked out)
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Determine AT_HOME based on the scheduled day of the week
+    - name: Determine AT_HOME
+      id: at_home
+      run: echo "::set-output name=value::$(python3 -c "import datetime; today = datetime.date.today(); print('true' if today.weekday() in [2, 4] else 'false')")"
+
     # Runs a script
-    - name: run a script
-      run: python3 bycode_automation.py
+    - name: Run a script
+      run: python3 bycode_automation.py --at_home ${{ steps.at_home.outputs.value }}
