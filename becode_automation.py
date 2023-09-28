@@ -91,6 +91,7 @@ def main():
     # Access the environment variable and convert it to a boolean
     at_home = os.environ.get("AT_HOME", "").lower() == "true"
     token = os.environ.get("TOKEN")
+    logging.info(f'at_home: {at_home}')
 
     try:
         record_attendance(at_home, token)
