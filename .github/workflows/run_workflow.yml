@@ -34,7 +34,7 @@ jobs:
     steps:
     # Checkout your repository (if not already checked out)
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Determine the value of AT_HOME based on the schedule
     - name: Set AT_HOME
