@@ -49,7 +49,7 @@ jobs:
 
     # Runs a script
     - name: Run a script
-      run: python3 ./bycode_automation.py
+      run: python3 becode_automation.py
       env:
         AT_HOME: ${{ env.AT_HOME }}
         TOKEN: ${{ secrets.TOKEN }}
