@@ -87,6 +87,7 @@ def record_attendance(at_home, token):
     
     logging.info(f'Status Code request record_attendance -> {resp.status_code}')
     logging.info(f'Request response record_attendance -> {resp.json()}')
+    logging.info('Congratulations! You have successfully recorded your attendance!')
 
 def main():
     # Access the environment variable and convert it to a boolean
