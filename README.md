@@ -36,9 +36,9 @@ This project was finished on September 29, 2023.
 
 The project was made by Junior AI & Data Engineers:
     
-Andreia Heringer Negreira: [LinkedIn](https://www.linkedin.com/in/andreiahnegreira/), [GitHub](https://github.com/andreia-negreira)
+**Andreia Heringer Negreira**: [LinkedIn](https://www.linkedin.com/in/andreiahnegreira/), [GitHub](https://github.com/andreia-negreira)
     
-Mykola Senko: [LinkedIn](https://www.linkedin.com/in/mykola-senko-683510a4), [GitHub](https://github.com/MykolaSenko)
+**Mykola Senko**: [LinkedIn](https://www.linkedin.com/in/mykola-senko-683510a4), [GitHub](https://github.com/MykolaSenko)
 ## License
 
 This project is under [GNU General Piblic License](./LICENSE) which allows to make modification to the code and use it for commercial purposes.
