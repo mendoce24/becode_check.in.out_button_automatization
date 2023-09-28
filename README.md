@@ -16,7 +16,7 @@ This project includes a GitHub Actions workflow that triggers the script based o
 
 To use this script make a fork of [this repository](https://github.com/MykolaSenko/becode_check.in.out_button_automatization). 
 In order to authenticate with the BeCode API, you need to provide your personal access token for the BeCode platform as a secret in your GitHub repository settings. The script will use this token for authentication when making API requests. You can find your personal access token at **mybecode --> inspect --> network --> fetch/xhr --> name (graph.becode.org) --> headers (request headers) --> authorization**.
-Copy your personal access token and paste it into the **Value** field in the workflow configuration, using this [Tutorial](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md). Give a name to your secret **TOKEN**. The script will use this token for authentication when making API requests.
+Copy your personal access token and paste it into the **Value** field in the workflow configuration, using this [Tutorial](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md). Give a name to your secret **"TOKEN"**. The script will use this token for authentication when making API requests.
 You are set! The script will run automatically according to the schedule you defined in the workflow configuration.
 
 Voilà.
