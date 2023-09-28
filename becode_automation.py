@@ -8,7 +8,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 # fetch/xhr --> name (graph.becode.org) --> headers (request headers) --> authorization
 
 # IMPORTANT: you will be needing to check the type of the request! 
-# To do so, instad of headers, go to payloads and check if the json matchs the payload of the functions bellow
+# To do so, instead of headers, go to payloads and check if the json matches the payload of the functions bellow
 
 class AttendanceTimePeriod(Enum):
     Morning = 'MORNING'
@@ -81,22 +81,8 @@ def record_attendance(bool):
     print(f'Status Code request -> {resp.status_code}')
     print(f'Request response -> {resp.json()}')
 
-'''# Instantiating an object with the scheduler
-scheduler = BlockingScheduler()
+def main():
+    record_attendance()
 
-# Jobs order
-# It is scheduled accordingly to the days that the student is at home or at campus
-scheduler.add_job(record_attendance, 'cron', day_of_week='mon,tue,thu', hour='9,17', args=[False])
-scheduler.add_job(record_attendance, 'cron', day_of_week='mon,tue,thu', hour='12,13', minute=30, args=[False])
-scheduler.add_job(record_attendance, 'cron', day_of_week='wed,fri', hour='9,17', args=[True])
-scheduler.add_job(record_attendance, 'cron', day_of_week='wed,fri', hour='12,13', minute=30, args=[True])
-
-# scheduler trigger
-# it is going to be executed on the terminal
-# it is possible to change it to be executed on the background (see object BackgroundScheduler)
-try:
-    scheduler.start()
-except KeyboardInterrupt:
-    # Ctrl+C to interrupt the job
-    pass
-'''
+if __name__ == "__main__":
+    main()
