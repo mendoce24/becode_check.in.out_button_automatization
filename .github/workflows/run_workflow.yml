@@ -9,15 +9,19 @@ on:
     - cron: "46 8,17 * * 1,2,4"
       env:
         AT_HOME: "false"  # Pass the boolean value as a string
+        TOKEN: ${{ secrets.TOKEN }}
     - cron: "30 12,13 * * 1,2,4"
       env:
         AT_HOME: "false"  # Pass the boolean value as a string
+        TOKEN: ${{ secrets.TOKEN }}
     - cron: "46 8,17 * * 3,5"
       env:
         AT_HOME: "true"  # Pass the boolean value as a string
+        TOKEN: ${{ secrets.TOKEN }}
     - cron: "30 12,13 * * 3,5"
       env:
         AT_HOME: "true"  # Pass the boolean value as a string
+        TOKEN: ${{ secrets.TOKEN }}
 
 # A workflow run that starts a script
 jobs: 
