@@ -53,7 +53,7 @@ def record_attendance(at_home, token):
     hour = datetime.now().hour
     minute = datetime.now().minute
     logging.info(f'Running record_attendace at {hour}:{minute}')
-    if hour == 8:
+    if hour == 8 or hour == 9:
         time_period = AttendanceTimePeriod.Morning
         # When calling this function here, the first request is sent and then the scheduler is going to trigger and start job for the current request right after
         get_junior_today_attendance(token)
@@ -61,7 +61,7 @@ def record_attendance(at_home, token):
         time_period = AttendanceTimePeriod.Lunch
     elif hour == 13:
         time_period = AttendanceTimePeriod.Noon
-    elif hour == 17:
+    elif hour == 17 or hour == 18:
         time_period = AttendanceTimePeriod.Evening
     else:
         return None
