@@ -19,7 +19,7 @@ In order to authenticate with the BeCode API, you need to provide your personal 
 Copy your personal access token and paste it into the **Value** field in the workflow configuration, using this [Tutorial](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md). Give a name to your secret **"TOKEN"**. The script will use this token for authentication when making API requests.
 You are set! The script will run automatically according to the schedule you defined in the workflow configuration.
 
-Voilà.
+**Voilà.**
 ### Dependencies
 
 This script depends on the following Python libraries:
