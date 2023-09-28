@@ -5,6 +5,7 @@ name: Schedule triggered workflow
 # Workflow runs when triggered by scheduler.
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "46 8,17 * * 1,2,4"
       env:
