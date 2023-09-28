@@ -33,6 +33,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checkout your repository (if not already checked out)
+    - name: Set Timezone
+      uses: szenius/set-timezone@v1.2
+      with:
+        timezoneLinux: "Europe/Brussels"
+        timezoneMacos: "Europe/Brussels"
+        timezoneWindows: "Brussels Standard Time"
+            
+    
     - name: Checkout code
       uses: actions/checkout@v3
 
