@@ -1,0 +1,28 @@
+# This is a basic workflow that is triggered by scheduler
+
+name: Schedule triggered workflow
+
+# Workflow runs when triggered by scheduler.
+on:
+  schedule:
+    - cron: "46 8,17 * * 1,2,4"
+      args: [false]
+    - cron: "30 12,13 * * 1,2,4"
+      args: [false]
+    - cron: "46 8,17 * * 3,5"
+      args: [true]
+    - cron: "30 12,13 * * 3,5"
+      args: [true]
+
+# A workflow run that starts a script
+jobs: 
+  # the name of a job
+  run_lola_run:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a script
+    - name: run a script
+      run: python3 bycode_automation.py
