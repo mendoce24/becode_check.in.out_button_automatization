@@ -1,49 +1,25 @@
-UNDER THE CONSTRUCTION!!!!
-
-
-# Automatised "push the button" code
-
-## Usage
-
-### Important
-
-- If you follow those steps, keep in mind that your code will be running locally. It means that your terminal will be open showing the task running and it relays on your computer to be turned on and not be in sleep mode.
-
-- In case you just want to run it locally, but is not interested on your terminal displaying the log, take a look at the method BackgroundScheduler (apscheduler).
-
-- You can also store and run this code in a EC2 instance, feel free.
-
-1. Install all the requirements
-2. Change the becode token
-3. Run the code
-
-Voilà.
-
-
+# Automated BeCode "push the button" script
 ## Project Description
 
-### Overview
-
-This project contains a Python script designed to automate attendance recording for a learning institution, specifically designed for use with the BeCode platform. The script utilizes the BeCode API to record attendance based on a predefined schedule and the student's current location (at home or on-site).
-
-### Features
+This project contains a Python script designed to automate attendance recording for a [My BeCode platform](https://my.becode.org/dashboard). The script utilizes the BeCode API to record attendance based on a predefined schedule and the student's current location (at home or on-site).
+## Features
 
 - **Automatic Attendance Recording:** The script automates the process of recording attendance at specified times of the day, considering whether the student is at home or on-site.
 
 - **Customizable Schedule:** The script allows you to configure the schedule for attendance recording, taking into account specific days of the week and time periods.
 
 - **Location-Based Recording:** Attendance is recorded differently depending on whether the student is at home or on-site, ensuring accurate tracking.
-
-### Workflow Integration
+## Workflow Integration
 
 This project includes a GitHub Actions workflow that triggers the script based on a schedule defined in the workflow configuration. The workflow runs the script, records attendance, and logs the results.
+## Usage
 
-### Usage
+To use this script make a fork of [this repository](https://github.com/MykolaSenko/becode_check.in.out_button_automatization). 
+In order to authenticate with the BeCode API, you need to provide your personal access token for the BeCode platform as a secret in your GitHub repository settings. The script will use this token for authentication when making API requests. You can find your personal access token at **mybecode --> inspect --> network --> fetch/xhr --> name (graph.becode.org) --> headers (request headers) --> authorization**.
+Copy your personal access token and paste it into the **Value** field in the workflow configuration, using this [Tutorial](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md). Give a name to your secret **TOKEN**. The script will use this token for authentication when making API requests.
+You are set! The script will run automatically according to the schedule you defined in the workflow configuration.
 
-To use this script, you need to provide your personal access token for the BeCode platform as a secret in your GitHub repository settings. The script will use this token for authentication when making API requests.
-
-Please refer to the setup and usage instructions in the [**Usage Guide**](USAGE.md) for detailed information on how to configure and run the script.
-
+Voilà.
 ### Dependencies
 
 This script depends on the following Python libraries:
@@ -53,15 +29,19 @@ This script depends on the following Python libraries:
 - `datetime`: Used for working with date and time values.
 - `os`: Used for accessing environment variables.
 - `logging`: Used for generating log files for script execution.
+## Timeline
 
-### Contributing
+This project was finished on September 29, 2023.
+## The Team
 
-If you would like to contribute to this project, feel free to fork the repository and submit pull requests. We welcome contributions, bug fixes, and feature enhancements.
+The project was made by Junior AI & Data Engineers:
+    
+Andreia Heringer Negreira: [LinkedIn](https://www.linkedin.com/in/andreiahnegreira/), [GitHub](https://github.com/andreia-negreira)
+    
+Mykola Senko: [LinkedIn](https://www.linkedin.com/in/mykola-senko-683510a4), [GitHub](https://github.com/MykolaSenko)
+## License
 
-### License
+This project is under [GNU General Piblic License](./LICENSE) which allows to make modification to the code and use it for commercial purposes.
 
-This project is licensed under the [MIT License](LICENSE.md). You are free to use, modify, and distribute this script as long as you adhere to the terms of the license.
-
-### Contact
-
-For any questions or inquiries related to this project, please contact [Your Name] at [your.email@example.com].
+Gent, Belgium
+September 29, 2023
