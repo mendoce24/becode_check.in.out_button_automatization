@@ -61,3 +61,7 @@ jobs:
       env:
         AT_HOME: ${{ env.AT_HOME }}
         TOKEN: ${{ secrets.TOKEN }}
+
+    # Print the contents of the my_script.log file
+    - name: Print the contents of the my_script.log file
+      run: cat $GITHUB_WORKSPACE/my_script.log
