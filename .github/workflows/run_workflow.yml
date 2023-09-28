@@ -7,15 +7,22 @@ name: Schedule triggered workflow
 on:
   schedule:
     - cron: "46 8,17 * * 1,2,4"
+      env:
+        AT_HOME: "false"
         
     - cron: "30 12,13 * * 1,2,4"
+      env:
+        AT_HOME: "false"
         
     - cron: "46 8,17 * * 3,5"
+      env:
+        AT_HOME: "true"
         
     - cron: "30 12,13 * * 3,5"
+      env:
+        AT_HOME: "true"
         
 
-# A workflow run that starts a script
 jobs: 
   # the name of a job
   run_lola_run:
@@ -31,11 +38,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Determine AT_HOME based on the scheduled day of the week
-    - name: Determine AT_HOME
-      id: at_home
-      run: echo "::set-output name=value::$(python3 -c "import datetime; today = datetime.date.today(); print('true' if today.weekday() in [2, 4] else 'false')")"
+    # Determine the value of AT_HOME based on the schedule
+    - name: Set AT_HOME
+      run: |
+        if [[ "${{ github.event_name }}" == "schedule" ]]; then
+          if [[ "${{ github.event.schedule }}" == *"Wed"* || "${{ github.event.schedule }}" == *"Fri"* ]]; then
+            echo "AT_HOME=true" >> $GITHUB_ENV
+          else
+            echo "AT_HOME=false" >> $GITHUB_ENV
+          fi
+        fi
 
     # Runs a script
     - name: Run a script
-      run: python3 bycode_automation.py --at_home ${{ steps.at_home.outputs.value }}
+      run: python3 bycode_automation.py
+      env:
+        AT_HOME: ${{ env.AT_HOME }}
+        TOKEN: ${{ env.TOKEN }}
