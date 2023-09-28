@@ -3,16 +3,21 @@
 name: Schedule triggered workflow
 
 # Workflow runs when triggered by scheduler.
+
 on:
   schedule:
     - cron: "46 8,17 * * 1,2,4"
-      args: [false]
+      env:
+        AT_HOME: "false"  # Pass the boolean value as a string
     - cron: "30 12,13 * * 1,2,4"
-      args: [false]
+      env:
+        AT_HOME: "false"  # Pass the boolean value as a string
     - cron: "46 8,17 * * 3,5"
-      args: [true]
+      env:
+        AT_HOME: "true"  # Pass the boolean value as a string
     - cron: "30 12,13 * * 3,5"
-      args: [true]
+      env:
+        AT_HOME: "true"  # Pass the boolean value as a string
 
 # A workflow run that starts a script
 jobs: 

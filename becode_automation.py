@@ -1,7 +1,7 @@
 import requests
 from enum import Enum
 from datetime import datetime
-from apscheduler.schedulers.blocking import BlockingScheduler
+import os
 
 # Get your personal token on: 
 # mybecode --> inspect --> network --> 
@@ -41,8 +41,7 @@ def get_junior_today_attendance():
     )
 
 # Request that "push the hour button". It passes the request with a personal token and the status (bool) of where the student is
-def record_attendance(bool):
-    at_home = bool
+def record_attendance(at_home):
     hour = datetime.now().hour
     minute = datetime.now().minute
     print(f'Running record_attendace at {hour}:{minute}')
@@ -82,7 +81,9 @@ def record_attendance(bool):
     print(f'Request response -> {resp.json()}')
 
 def main():
-    record_attendance()
+    # Access the environment variable and convert it to a boolean
+    at_home = os.environ.get("AT_HOME", "").lower() == "true"
+    record_attendance(at_home)
 
 if __name__ == "__main__":
     main()
