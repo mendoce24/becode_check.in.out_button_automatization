@@ -13,8 +13,8 @@ log_filename = 'my_script.log'
 log_level = logging.INFO
 
 logging.basicConfig(filename=log_filename, level=log_level, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
-logging.info('This is an informational message.')
-logging.warning('This is a warning message.')
+
+
 
 class AttendanceTimePeriod(Enum):
     Morning = 'MORNING'
@@ -81,8 +81,8 @@ def record_attendance(at_home, token):
         headers={'Authorization': f'Bearer {token}'}
     )
     
-    print(f'Status Code request -> {resp.status_code}')
-    print(f'Request response -> {resp.json()}')
+    logging.info(f'Status Code request -> {resp.status_code}')
+    logging.info(f'Request response -> {resp.json()}')
 
 def main():
     # Access the environment variable and convert it to a boolean
