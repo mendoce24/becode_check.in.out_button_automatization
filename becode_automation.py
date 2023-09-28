@@ -64,6 +64,7 @@ def record_attendance(at_home, token):
     elif hour == 17 or hour == 18:
         time_period = AttendanceTimePeriod.Evening
     else:
+        logging.warning(f'No time period found for hour {hour}')
         return None
 
     
