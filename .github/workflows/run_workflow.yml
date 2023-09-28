@@ -8,18 +8,22 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "46 8,17 * * 1,2,4"
+    - timezone: 'Europe/Brussels'
       env:
         AT_HOME: "false"
         
     - cron: "30 12,13 * * 1,2,4"
+    - timezone: 'Europe/Brussels'
       env:
         AT_HOME: "false"
         
     - cron: "46 8,17 * * 3,5"
+    - timezone: 'Europe/Brussels'
       env:
         AT_HOME: "true"
         
     - cron: "30 12,13 * * 3,5"
+    - timezone: 'Europe/Brussels'
       env:
         AT_HOME: "true"
         
