@@ -29,9 +29,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    env:  # Define environment variables
-      TOKEN: ${{ secrets.TOKEN }}
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checkout your repository (if not already checked out)
@@ -54,4 +51,4 @@ jobs:
       run: python3 bycode_automation.py
       env:
         AT_HOME: ${{ env.AT_HOME }}
-        TOKEN: ${{ env.TOKEN }}
+        TOKEN: ${{ secrets.TOKEN }}
