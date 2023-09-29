@@ -8,19 +8,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "46 6,15 * * 1,2,3,4,5"
-      # timezone: 'Europe/Brussels'
-      env:
-        TZ: 'Europe/Brussels'
-        
+              
     - cron: "30 10 * * 1,2,3,4,5"
-      # timezone: 'Europe/Brussels'
-      env:
-        TZ: 'Europe/Brussels'
-
+      
     - cron: "10 11 * * 1,2,3,4,5"
-      env:
-        TZ: 'Europe/Brussels'
-
+      
 jobs: 
   # the name of a job
   run_lola_run:
