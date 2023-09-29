@@ -33,7 +33,7 @@ def is_at_home():
     4), and False otherwise.
     """
     today = datetime.now().weekday()
-    return today == 2 or today == 4
+    return today in [2, 4]
 
 # Request that pass the object of the day, hour, minute and second to becode graph regarding the time frame which the button was pushed
 def get_junior_today_attendance(token):
@@ -83,7 +83,7 @@ def record_attendance(at_home, token):
     hour = datetime.now().hour
     minute = datetime.now().minute
     logging.info(f'Running record_attendace at {hour}:{minute}')
-    if hour == 8 or hour == 9:
+    if hour in [8, 9]:
         time_period = AttendanceTimePeriod.Morning
         # When calling this function here, the first request is sent and then the scheduler is going to trigger and start job for the current request right after
         get_junior_today_attendance(token)
@@ -91,7 +91,7 @@ def record_attendance(at_home, token):
         time_period = AttendanceTimePeriod.Lunch
     elif hour == 13:
         time_period = AttendanceTimePeriod.Noon
-    elif hour == 17 or hour == 18:
+    elif hour in [17, 18]:
         time_period = AttendanceTimePeriod.Evening
     else:
         logging.warning(f'No time period found for hour {hour}')
