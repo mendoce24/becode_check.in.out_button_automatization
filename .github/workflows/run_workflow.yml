@@ -6,6 +6,8 @@ name: Schedule triggered workflow
 
 on:
   workflow_dispatch:
+    env:
+      TZ: 'Europe/Brussels'
   schedule:
     - cron: "46 8,17 * * 1,2,4"
       # timezone: 'Europe/Brussels'
