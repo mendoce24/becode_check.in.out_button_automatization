@@ -3,11 +3,12 @@
 name: Schedule triggered workflow
 
 # Workflow runs when triggered by scheduler.
-
 on:
   workflow_dispatch:
   schedule:
-    - cron: "46 6,15 * * 1,2,3,4,5"
+    - cron: "46 6 * * 1,2,3,4,5"
+
+    - cron: "15 15 * * 1,2,3,4,5"
               
     - cron: "30 10 * * 1,2,3,4,5"
       
@@ -30,6 +31,9 @@ jobs:
         timezoneWindows: "Brussels Standard Time"
             
     
+    # The `name: Checkout code` step is using the `actions/checkout@v3` action to checkout the code 
+    # from the repository. This step ensures that the workflow has access to the latest version 
+    # of the code before running any subsequent steps.
     - name: Checkout code
       uses: actions/checkout@v3
 
