@@ -6,7 +6,6 @@ name: Schedule triggered workflow
 
 on:
   workflow_dispatch:
-    timezone: 'Europe/Brussels'
   schedule:
     - cron: "46 8,17 * * 1,2,4"
       # timezone: 'Europe/Brussels'
@@ -56,13 +55,16 @@ jobs:
     # Determine the value of AT_HOME based on the schedule
     - name: Set AT_HOME
       run: |
-        if [[ "${{ github.event_name }}" == "schedule" ]]; then
-          if [[ "${{ github.event.schedule }}" == *"Wed"* || "${{ github.event.schedule }}" == *"Fri"* ]]; then
-            echo "AT_HOME=true" >> $GITHUB_ENV
-          else
-            echo "AT_HOME=false" >> $GITHUB_ENV
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            case "${{ github.event.schedule }}" in
+              *"Wed"* | *"Fri"*)
+                echo "AT_HOME=true" >> $GITHUB_ENV
+                ;;
+              *)
+                echo "AT_HOME=false" >> $GITHUB_ENV
+                ;;
+            esac
           fi
-        fi
 
     # Runs a script
     - name: Run a script
