@@ -4,10 +4,6 @@ from datetime import datetime
 import os
 import logging
 
-# Get your personal token on: 
-# mybecode --> inspect --> network --> 
-# fetch/xhr --> name (graph.becode.org) --> headers (request headers) --> authorization
-
 
 log_filename = 'my_script.log'
 log_level = logging.INFO
@@ -25,6 +21,10 @@ class AttendanceTimePeriod(Enum):
 # Getting day object for the junior_attendance request
 def day_object():
     return datetime.timestamp(datetime.now())
+
+def is_at_home():
+    today = datetime.now().weekday()
+    return today == 2 or today == 4
 
 # Request that pass the object of the day, hour, minute and second to becode graph regarding the time frame which the button was pushed
 def get_junior_today_attendance(token):
@@ -91,7 +91,7 @@ def record_attendance(at_home, token):
 
 def main():
     # Access the environment variable and convert it to a boolean
-    at_home = os.environ.get("AT_HOME", "").lower() == "true"
+    at_home = is_at_home()
     token = os.environ.get("TOKEN")
     logging.info(f'at_home: {at_home}')
 

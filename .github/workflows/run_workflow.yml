@@ -7,30 +7,19 @@ name: Schedule triggered workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron: "46 8,17 * * 1,2,4"
+    - cron: "46 8,17 * * *"
       # timezone: 'Europe/Brussels'
       env:
         TZ: 'Europe/Brussels'
-        AT_HOME: "false"
         
-    - cron: "30 12,13 * * 1,2,4"
+    - cron: "30 12 * * *"
       # timezone: 'Europe/Brussels'
       env:
         TZ: 'Europe/Brussels'
-        AT_HOME: "false"
-        
-    - cron: "46 8,17 * * 3,5"
-      # timezone: 'Europe/Brussels'
+
+    - cron: "21 13 * * *"
       env:
         TZ: 'Europe/Brussels'
-        AT_HOME: "true"
-        
-    - cron: "30 12,13 * * 3,5"
-      # timezone: 'Europe/Brussels'
-      env:
-        TZ: 'Europe/Brussels'
-        AT_HOME: "true"
-        
 
 jobs: 
   # the name of a job
@@ -52,25 +41,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Determine the value of AT_HOME based on the schedule
-    - name: Set AT_HOME
-      run: |
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            case "${{ github.event.schedule }}" in
-              *"Wed"* | *"Fri"*)
-                echo "AT_HOME=true" >> $GITHUB_ENV
-                ;;
-              *)
-                echo "AT_HOME=false" >> $GITHUB_ENV
-                ;;
-            esac
-          fi
-
-    # Runs a script
+        # Runs a script
     - name: Run a script
       run: python3 becode_automation.py
       env:
-        AT_HOME: ${{ env.AT_HOME }}
         TOKEN: ${{ secrets.TOKEN }}
 
     # Print the contents of the my_script.log file
