@@ -38,10 +38,10 @@ jobs:
       uses: actions/checkout@v3
 
         # Runs a script
-    - name: Run a script
-      run: python3 becode_automation.py
-      env:
-        TOKEN: ${{ secrets.TOKEN }}
+    #- name: Run a script
+      #run: python3 becode_automation.py
+     # env:
+      #  TOKEN: ${{ secrets.TOKEN }}
 
     # Print the contents of the my_script.log file
     - name: Print the contents of the my_script.log file
