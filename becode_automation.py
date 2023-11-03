@@ -33,7 +33,7 @@ def is_at_home():
     4), and False otherwise.
     """
     today = datetime.now().weekday()
-    return today in [2, 4]
+    return today in [0, 2, 4]
 
 # Request that pass the object of the day, hour, minute and second to becode graph regarding the time frame which the button was pushed
 def get_junior_today_attendance(token):
