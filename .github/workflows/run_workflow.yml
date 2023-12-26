@@ -1,48 +1,48 @@
 # This is a basic workflow that is triggered by scheduler
 
-name: Schedule triggered workflow
+#name: Schedule triggered workflow
 
 # Workflow runs when triggered by scheduler.
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "46 7 * * 1,2,3,4,5"
+#on:
+ # workflow_dispatch:
+  #schedule:
+   # - cron: "46 7 * * 1,2,3,4,5"
 
-    - cron: "15 16 * * 1,2,3,4,5"
+    #- cron: "15 16 * * 1,2,3,4,5"
               
-    - cron: "30 11 * * 1,2,3,4,5"
+    #- cron: "30 11 * * 1,2,3,4,5"
       
-    - cron: "04 12 * * 1,2,3,4,5"
+    #- cron: "04 12 * * 1,2,3,4,5"
       
-jobs: 
+#jobs: 
   # the name of a job
-  run_lola_run:
+ # run_lola_run:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  #  runs-on: ubuntu-latest
     
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+   # steps:
     # Checkout your repository (if not already checked out)
-    - name: Set Timezone
-      uses: szenius/set-timezone@v1.2
-      with:
-        timezoneLinux: "Europe/Brussels"
-        timezoneMacos: "Europe/Brussels"
-        timezoneWindows: "Brussels Standard Time"
+    #- name: Set Timezone
+     # uses: szenius/set-timezone@v1.2
+      #with:
+       # timezoneLinux: "Europe/Brussels"
+        #timezoneMacos: "Europe/Brussels"
+        #timezoneWindows: "Brussels Standard Time"
             
     
     # The `name: Checkout code` step is using the `actions/checkout@v3` action to checkout the code 
     # from the repository. This step ensures that the workflow has access to the latest version 
     # of the code before running any subsequent steps.
-    - name: Checkout code
-      uses: actions/checkout@v3
+    #- name: Checkout code
+     # uses: actions/checkout@v3
 
     # Runs a script
-    - name: Run a script
-      run: python3 becode_automation.py
-      env:
-        TOKEN: ${{ secrets.TOKEN }}
+    #- name: Run a script
+     # run: python3 becode_automation.py
+      #env:
+       # TOKEN: ${{ secrets.TOKEN }}
 
     # Print the contents of the my_script.log file
-    - name: Print the contents of the my_script.log file
+    #- name: Print the contents of the my_script.log file
       run: cat $GITHUB_WORKSPACE/my_script.log
